@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 25, 2023 2:02:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="supermercado" name="modelo.Produtos" optimistic-lock="version" table="produtos">
+    <id name="idProduto" type="java.lang.Integer">
+      <column name="id_produto"/>
+      <generator class="foreign">
+        <param name="property">stock</param>
+      </generator>
+    </id>
+    <many-to-one class="modelo.Clientes" fetch="select" name="clientes">
+      <column name="cliente_id" not-null="true"/>
+    </many-to-one>
+    <one-to-one class="modelo.Stock" constrained="true" name="stock"/>
+    <property name="nome" type="string">
+      <column length="50" name="nome" not-null="true"/>
+    </property>
+    <property name="designacao" type="string">
+      <column length="50" name="designacao" not-null="true"/>
+    </property>
+    <property name="preco" type="int">
+      <column name="preco" not-null="true"/>
+    </property>
+    <property name="dataValidade" type="date">
+      <column length="10" name="data_validade" not-null="true"/>
+    </property>
+    <property name="quantidadeProduto" type="int">
+      <column name="quantidade_produto" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="vendas" table="venda">
+      <key>
+        <column name="produto_id" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Venda"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 25, 2023 2:02:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="supermercado" name="modelo.Clientes" optimistic-lock="version" table="clientes">
+    <id name="idCliente" type="java.lang.Integer">
+      <column name="id_cliente"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nome" type="string">
+      <column length="50" name="nome" not-null="true"/>
+    </property>
+    <property name="apelido" type="string">
+      <column length="50" name="apelido" not-null="true"/>
+    </property>
+    <property name="endereco" type="string">
+      <column length="70" name="endereco" not-null="true"/>
+    </property>
+    <property name="telefone" type="int">
+      <column name="telefone" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="funcionarios" table="funcionario">
+      <key>
+        <column name="cliente_id" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Funcionario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="produtoses" table="produtos">
+      <key>
+        <column name="cliente_id" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Produtos"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="vendas" table="venda">
+      <key>
+        <column name="cliente_id" not-null="true"/>
+      </key>
+      <one-to-many class="modelo.Venda"/>
+    </set>
+  </class>
+</hibernate-mapping>

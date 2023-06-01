@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 25, 2023 2:02:35 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="supermercado" name="modelo.Stock" optimistic-lock="version" table="stock">
+    <id name="idStock" type="java.lang.Integer">
+      <column name="id_stock"/>
+      <generator class="identity"/>
+    </id>
+    <property name="quantidadeProduto" type="int">
+      <column name="quantidade_produto" not-null="true"/>
+    </property>
+    <property name="produtoId" type="int">
+      <column name="produto_id" not-null="true"/>
+    </property>
+    <one-to-one class="modelo.Produtos" name="produtos"/>
+  </class>
+</hibernate-mapping>

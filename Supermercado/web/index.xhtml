@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<h:head>
+    <div class="card">
+    <h:form>
+        <p:growl id="messages"/>
+
+        <p:menubar>
+            <p:submenu label="Categorias" icon="pi pi-fw pi-file">
+                <p:menuitem value="Carro" icon=""/>
+                <p:menuitem value="Higiene e Beleza" icon=""/>
+                <p:menuitem value="Roupas" icon=""/>
+                <p:menuitem value="Mercearia" icon=""/>
+                <p:menuitem value="Brinquedos" icon=""/>
+                <p:menuitem value="Frutas e vegetais" icon=""/>
+                <p:separator />
+            </p:submenu>
+            <p:submenu label="Users" icon="">
+           <p:menuitem value="New" icon="pi pi-fw pi-user-plus" outcome="registo.xhtml"/>
+            </p:submenu>
+
+            <p:menuitem value="Quit" icon="pi pi-fw pi-power-off"/>
+
+            <f:facet name="options">
+                <div class="ui-input-icon-left mr-2">
+                    <i class="pi pi-fw pi-search" />
+                    <p:inputText placeholder="Search"/>
+                </div>
+                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+            </f:facet>
+        </p:menubar>
+    </h:form>
+</div>
+</h:head>
+
+<h:body>
+    
+
+</h:body>
+</html>
