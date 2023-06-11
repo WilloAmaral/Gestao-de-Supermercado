@@ -6,20 +6,18 @@
 package DAO;
 
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import modelos.Clientes;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import persistencia.HibernateUtil;
-import supermecadohibernate.Clientes;
+
 
 /**
  *
  * @author Duilio Amaral
  */
-@ManagedBean
-@RequestScoped
+
 public class clienteDAO {
 
     /**
@@ -98,11 +96,8 @@ public class clienteDAO {
         return listaClientes;
     }
 
-    public void inserircliente(modelo.Clientes cliente) {
+    public List<Clientes> apresentarClientes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+ }
 
-    public List<modelo.Clientes> apresentarClientes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}

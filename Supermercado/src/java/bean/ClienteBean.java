@@ -6,7 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import modelo.Clientes;
+import modelos.Clientes;
 
 @ManagedBean
 @ViewScoped
@@ -43,6 +43,7 @@ public class ClienteBean {
         cliente = new Clientes();
         addMessage("Cliente inserido com sucesso");
     }
+    
 
    
 
