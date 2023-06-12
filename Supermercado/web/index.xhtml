@@ -23,8 +23,8 @@
                 <p:menuitem value="Frutas e vegetais" icon=""/>
                 <p:separator />
             </p:submenu>
-            <p:submenu label="Users" icon="">
-           <p:menuitem value="New" icon="pi pi-fw pi-user-plus" outcome="registo.xhtml"/>
+            <p:submenu label="Registar" icon="">
+           <p:menuitem value="Novo" icon="pi pi-fw pi-user-plus" outcome="registo.xhtml"/>
             </p:submenu>
 
             <p:menuitem value="Quit" icon="pi pi-fw pi-power-off"/>
@@ -40,9 +40,242 @@
     </h:form>
 </div>
 </h:head>
+        <br/>
+        <br/>
 
 <h:body>
-    
+   <!-- Slide 1 -->
+    <style>
+    .product-item .product-item-content {
+        border: 1px solid var(--surface-d);
+        border-radius: 3px;
+        margin: .3rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
 
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+    </style>
+
+
+    <h:form id="form">
+
+    <div class="card">
+        <p:carousel value="#{carouselView.products}" var="product" numVisible="3" numScroll="3"
+                    responsiveOptions="#{carouselView.responsiveOptions}">
+            <f:facet name="header">
+                <h5>Novas Ofertas</h5>
+            </f:facet>
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="mb-3">
+                        <p:graphicImage value="PáginasWeb/resources/imagens/Bola.jpeg" styleClass="product-image"/>
+                    </div>
+                    <div>
+                        <h4 class="mb-1">#{product.name}</h4>
+                        <h6 class="mt-0 mb-3">
+                            <h:outputText value="#{product.price}">
+                                <f:convertNumber type="currency" pattern="¤#0" currencySymbol="$" />
+                            </h:outputText>
+                        </h6>
+                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                        <div class="mt-5">
+                            <p:commandButton type="button" icon="pi pi-search" styleClass="rounded-button mr-2" />
+                            <p:commandButton type="button" icon="pi pi-star" styleClass="ui-button-success rounded-button mr-2" />
+                            <p:commandButton type="button" icon="pi pi-cog" styleClass="ui-button-help rounded-button" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </p:carousel>
+        </div>
+       </h:form>
+
+        <br/>
+        <br/>
+        
+<!-- Cards com preco e infromacao -->    
+    <h:form>    
+    <p:card style="width: 25em">
+        <f:facet name="">
+        <img alt="user header" src="resources/images/Cone.jpeg"/>
+        </f:facet>
+        <f:facet name="title">
+            Cones
+        </f:facet>
+        <f:facet name="subtitle">
+            245 MZN
+        </f:facet>
+
+        <p>LANNEY 9'' Cones Sports, 24 Pack Soccer Football Basketball Plastic Orange Cone</p>
+            <!--Pop para aparecer informcaoes do cartao-->    
+
+                <p:growl id="message" showDetail="true" />
+                <p:commandButton value="Buy" action="#{confirmView.confirm}" update="message" styleClass="mr-2" icon="pi pi-check"
+                    onclick="PF('confirmDialog').show()" />
+               <p:confirmDialog widgetVar="confirmDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350" styleClass="text-center">
+                    <p styleClass="text-center"> Insere os dados do cartao</p>
+                    <h:panelGrid columns="2">
+                        
+                        <!-- Insere dados do cartao -->    
+                        <h:outputLabel for="nomeCartao" value="Nome:" />
+                        <p:inputText id="nomeCartao" value="#{confirmView.nomeCartao}" required="true" />
+
+                        <h:outputLabel for="numeroCartao" value="Número do Cartão:" />
+                        <p:inputText id="numeroCartao" value="#{confirmView.numeroCartao}" required="true" />
+
+                        <h:outputLabel for="cvvCartao" value="CVV:" />
+                        <p:inputText id="cvvCartao" value="#{confirmView.cvvCartao}" required="true" />
+
+                        <h:outputLabel for="dataExpiracao" value="Data de Expiração:" />
+                        <p:inputText id="dataExpiracao" value="#{confirmView.dataExpiracao}" required="true" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"
+                        onclick="PF('confirmDialog').hide()" />
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
+                        action="#{confirmView.saveCardData}" update="message" onclick="PF('confirmDialog').hide()" />
+                </p:confirmDialog>
+
+    </p:card>
+</h:form>
+        <!-- Slide with automatic scroll -->    
+
+        <h:form>     
+        <div class="card">
+        <p:carousel value="#{carouselView.products}" var="product" circular="true" autoplayInterval="3000"
+                    responsiveOptions="#{carouselView.responsiveOptions}" numVisible="3" numScroll="1">
+            <f:facet name="header">
+                <h5>Circular, AutoPlay, 3 Items per Page and Scroll by 1</h5>
+            </f:facet>
+
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="mb-3">
+                        <p:graphicImage name="demo/images/product/#{product.image}" styleClass="product-image"/>
+                    </div>
+                    <div>
+                        <h4 class="mb-1">#{product.name}</h4>
+                        <h6 class="mt-0 mb-3">
+                            <h:outputText value="#{product.price}">
+                                <f:convertNumber type="currency" pattern="¤#0" currencySymbol="$" />
+                            </h:outputText>
+                        </h6>
+                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
+                        <div class="mt-5">
+                            <p:commandButton type="button" icon="pi pi-search" styleClass="rounded-button mr-2" />
+                            <p:commandButton type="button" icon="pi pi-star" styleClass="ui-button-success rounded-button mr-2" />
+                            <p:commandButton type="button" icon="pi pi-cog" styleClass="ui-button-help rounded-button" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+    </div>
+        </h:form>
+        
+
+<!-- Historial do supermercado -->    
+
+        <h:form>
+        <h5></h5>
+        <p:fieldset legend="Breve Historial" toggleable="true" toggleSpeed="500">
+            <p>
+                O Supermercado SuperChoice foi fundado em 2015 por um gupo de jovens empreendedores visionários que viram a oportunidade de fornecer uma ampla variedade de produtos alimentícios e itens de consumo em um único local conveniente para os clientes. Na época da sua abertura, o supermercado era uma pequena loja localizada em um bairro residencial.
+                <br/>
+                Com o passar dos anos, o Supermercado SuperChoice ganhou popularidade e expandiu sua operação. Em 2018, a primeira filial foi aberta em uma área comercial movimentada da cidade. Essa expansão permitiu que o supermercado atendesse a uma base de clientes maior e oferecesse uma variedade ainda maior de produtos.
+                <br/>
+                Em 2020 Supermercado SuperChoice adotou tecnologias avançadas para aprimorar sua operação. Introduziu sistemas de checkout eletrônicos para agilizar o processo de pagamento, implementou programas de fidelidade para recompensar os clientes fiéis e lançou seu primeiro site para permitir que os clientes visualizassem ofertas e informações sobre os produtos online.
+                <br/>
+                Nos anos 2022 Supermercado SuperChoice investiu em práticas sustentáveis ​​e responsabilidade ambiental. Implementou iniciativas de reciclagem, redução do uso de plástico e introduziu produtos orgânicos e de comércio justo em suas prateleiras.
+                <br/>
+                Atualmente, o Supermercado SuperChoice possui várias filiais espalhadas pela cidade e se tornou uma marca confiável e reconhecida. Além de oferecer uma ampla variedade de produtos alimentícios frescos, produtos de mercearia, artigos de higiene pessoal e limpeza doméstica, o supermercado também possui um serviço de entrega em domicílio conveniente, além de programas de fidelidade atraentes e atendimento ao cliente excepcional.
+            </p>
+        </p:fieldset>
+    </h:form>
 </h:body>
+        
+     <h:head>
+    <style>
+        footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-container h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .about-us, .newsletter, .contact-us, .social-media {
+            width: 25%;
+            margin-bottom: 20px;
+        }
+
+        .about-us p, .newsletter p, .contact-us p {
+            margin-bottom: 10px;
+        }
+
+        .newsletter input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-media p-commandLink {
+            display: block;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form>
+        <footer>
+            <div class="footer-container">
+                <div class="Newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber nossas últimas notícias</p>
+                    <p:inputText placeholder="Digite seu e-mail" />
+                    <p:commandButton value="Inscrever" />
+                </div>
+                <div class="Contact-us">
+                    <h3>Entre em Contato</h3>
+                    <p>Endereço: Avenida Eduardo Mondlane, Maputo</p>
+                    <p>Telefone: (258) 833339072</p>
+                    <p>Email: superchoice@gmail.com</p>
+                </div>
+                <div class="social-media">
+                    <h3>Redes Sociais</h3>
+                    <p:commandLink value="Facebook"/>
+                    <p:commandLink value="Twitter" 
+                    <p:commandLink value="Instagram" 
+                </div>
+            </div>
+        </footer>
+    </h:form>
+</h:body>
+
+        
+        
+            
+        
 </html>
