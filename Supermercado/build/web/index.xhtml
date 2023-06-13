@@ -98,21 +98,20 @@
         <br/>
         
 <!-- Cards com preco e infromacao -->    
-    <h:form>    
-    <p:card style="width: 25em">
-        <f:facet name="">
-        <img alt="user header" src="resources/images/Cone.jpeg"/>
-        </f:facet>
+    <!-- Cards com preco e infromacao -->    
+    <h:form>
+    <p:card style="width: 20em">
+    <f:facet name="header">
+        <img alt="user header" src="resources/imagens/bola1.jpg" />
+    </f:facet>
         <f:facet name="title">
-            Cones
+            Bola de Futebol
         </f:facet>
         <f:facet name="subtitle">
-            245 MZN
+            400 MZN
         </f:facet>
-
-        <p>LANNEY 9'' Cones Sports, 24 Pack Soccer Football Basketball Plastic Orange Cone</p>
-            <!--Pop para aparecer informcaoes do cartao-->    
-
+        <p></p>
+        <!--Pop para aparecer informcaoes do cartao-->    
                 <p:growl id="message" showDetail="true" />
                 <p:commandButton value="Buy" action="#{confirmView.confirm}" update="message" styleClass="mr-2" icon="pi pi-check"
                     onclick="PF('confirmDialog').show()" />
@@ -139,9 +138,107 @@
                     <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
                         action="#{confirmView.saveCardData}" update="message" onclick="PF('confirmDialog').hide()" />
                 </p:confirmDialog>
-
     </p:card>
 </h:form>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!-- Card 2 com preco e infromacao -->    
+    <h:form>    
+    <p:card style="width: 20em; margin-left: 450px; margin-top: -500px;">
+    <f:facet name="header">
+        <img alt="user header" src="resources/imagens/Jordan.jpg" />
+    </f:facet>
+        <f:facet name="title">
+           AIR Jordan 1 High
+        </f:facet>
+        <f:facet name="subtitle">
+            3000 MZN
+        </f:facet>
+        <p></p>
+        <!--Pop para aparecer informcaoes do cartao-->    
+                <p:growl id="message" showDetail="true" />
+                <p:commandButton value="Buy" action="#{confirmView.confirm}" update="message" styleClass="mr-2" icon="pi pi-check"
+                    onclick="PF('confirmDialog').show()" />
+               <p:confirmDialog widgetVar="confirmDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350" styleClass="text-center">
+                    <p styleClass="text-center"> Insere os dados do cartao</p>
+                    <h:panelGrid columns="2">
+                        
+                        <!-- Insere dados do cartao -->    
+                        <h:outputLabel for="nomeCartao" value="Nome:" />
+                        <p:inputText id="nomeCartao" value="#{confirmView.nomeCartao}" required="true" />
+
+                        <h:outputLabel for="numeroCartao" value="Número do Cartão:" />
+                        <p:inputText id="numeroCartao" value="#{confirmView.numeroCartao}" required="true" />
+
+                        <h:outputLabel for="cvvCartao" value="CVV:" />
+                        <p:inputText id="cvvCartao" value="#{confirmView.cvvCartao}" required="true" />
+
+                        <h:outputLabel for="dataExpiracao" value="Data de Expiração:" />
+                        <p:inputText id="dataExpiracao" value="#{confirmView.dataExpiracao}" required="true" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"
+                        onclick="PF('confirmDialog').hide()" />
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
+                        action="#{confirmView.saveCardData}" update="message" onclick="PF('confirmDialog').hide()" />
+                </p:confirmDialog>
+    </p:card>            
+</h:form>    
+<br/>
+<br/>
+<br/>
+<br/>
+
+<!-- Card 3 com preco e infromacao --> 
+<h:form>    
+    <p:card style="width: 20em; margin-left: 900px; margin-top: -500px;">
+    <f:facet name="header">
+        <img alt="user header" src="resources/imagens/Raquete.jpg" />
+    </f:facet>
+        <f:facet name="title">
+           Wilson Pro Staff
+        </f:facet>
+        <f:facet name="subtitle">
+            1500 MZN
+        </f:facet>
+        <p></p>
+        <!--Pop para aparecer informcaoes do cartao-->    
+                <p:growl id="message" showDetail="true" />
+                <p:commandButton value="Buy" action="#{confirmView.confirm}" update="message" styleClass="mr-2" icon="pi pi-check"
+                    onclick="PF('confirmDialog').show()" />
+               <p:confirmDialog widgetVar="confirmDialog" global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350" styleClass="text-center">
+                    <p styleClass="text-center"> Insere os dados do cartao</p>
+                    <h:panelGrid columns="2">
+                        
+                        <!-- Insere dados do cartao -->    
+                        <h:outputLabel for="nomeCartao" value="Nome:" />
+                        <p:inputText id="nomeCartao" value="#{confirmView.nomeCartao}" required="true" />
+
+                        <h:outputLabel for="numeroCartao" value="Número do Cartão:" />
+                        <p:inputText id="numeroCartao" value="#{confirmView.numeroCartao}" required="true" />
+
+                        <h:outputLabel for="cvvCartao" value="CVV:" />
+                        <p:inputText id="cvvCartao" value="#{confirmView.cvvCartao}" required="true" />
+
+                        <h:outputLabel for="dataExpiracao" value="Data de Expiração:" />
+                        <p:inputText id="dataExpiracao" value="#{confirmView.dataExpiracao}" required="true" />
+                    </h:panelGrid>
+
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"
+                        onclick="PF('confirmDialog').hide()" />
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes"
+                        action="#{confirmView.saveCardData}" update="message" onclick="PF('confirmDialog').hide()" />
+                </p:confirmDialog>
+    </p:card>            
+</h:form> 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
         <!-- Slide with automatic scroll -->    
 
         <h:form>     
@@ -274,10 +371,5 @@
             </div>
         </footer>
     </h:form>
-</h:body>
-
-        
-        
-            
-        
+</h:body>        
 </html>
